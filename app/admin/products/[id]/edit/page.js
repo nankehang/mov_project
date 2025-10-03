@@ -1,5 +1,4 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/authOptions";
+import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import ProductForm from "../../../ProductForm";
 import { getProductById } from "@/lib/products";
@@ -7,7 +6,7 @@ import { notFound } from "next/navigation";
 
 export default async function EditProductPage({ params }) {
   const { id } = await params;
-  const session = await getServerSession(authOptions);
+  const session = await auth();
 
   if (!session || session.user?.role !== "admin") {
     redirect("/admin/login");

@@ -1,11 +1,10 @@
 import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/authOptions";
+import { auth } from "@/auth";
 import { getProducts } from "@/lib/products";
 import AdminDashboard from "./AdminDashboard";
 
 export default async function AdminPage() {
-  const session = await getServerSession(authOptions);
+  const session = await auth();
 
   if (!session || session.user?.role !== "admin") {
     redirect("/admin/login");

@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
+import { auth } from "@/auth";
 import Product from "@/models/Product";
 import { connectDB } from "@/lib/db";
-import { authOptions } from "@/lib/authOptions";
 
 function isAdmin(session) {
   return session?.user?.role === "admin";
@@ -27,7 +26,7 @@ export async function GET(_request, { params }) {
 }
 
 export async function PATCH(request, { params }) {
-  const session = await getServerSession(authOptions);
+  const session = await auth();
   if (!isAdmin(session)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -86,7 +85,7 @@ export async function PATCH(request, { params }) {
 }
 
 export async function DELETE(_request, { params }) {
-  const session = await getServerSession(authOptions);
+  const session = await auth();
   if (!isAdmin(session)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
