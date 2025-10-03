@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## hmoobwin Commerce Platform
 
-## Getting Started
+This project is now a fully dynamic e-commerce showcase powered by **Next.js 15**, **MongoDB**, **NextAuth.js**, and **Tailwind CSS**. Storefront shoppers see products pulled from MongoDB, while administrators can sign in to manage the catalog through a protected dashboard.
 
-First, run the development server:
+## Prerequisites
+
+- Node.js 18.18+ or 20+
+- A MongoDB connection string (Atlas or self-hosted)
+
+## 1. Environment setup
+
+1. Duplicate `.env.example` to `.env.local`.
+2. Fill in the values:
+	- `MONGODB_URI` – your MongoDB connection string
+	- `NEXTAUTH_SECRET` – generate with `openssl rand -base64 32`
+	- `NEXTAUTH_URL` – usually `http://localhost:3000` in development
+	- `ADMIN_EMAIL` / `ADMIN_PASSWORD` – bootstrap credentials for the seed script
+
+## 2. Install dependencies
+
+```bash
+npm install
+```
+
+## 3. Seed initial data (optional but recommended)
+
+Populate MongoDB with the sample catalog and an admin user:
+
+```bash
+npm run seed
+```
+
+## 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) to browse the storefront. Products are served directly from MongoDB.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Admin workflow
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Navigate to [http://localhost:3000/admin/login](http://localhost:3000/admin/login).
+2. Sign in with the admin credentials you set in `.env.local` (or via the seed script).
+3. Use the dashboard to create, edit, or delete products. All operations go through authenticated API routes backed by MongoDB.
 
-## Learn More
+## Project structure highlights
 
-To learn more about Next.js, take a look at the following resources:
+- `lib/db.js` – centralized MongoDB connection (Mongoose)
+- `models/Product.js` & `models/User.js` – data models with validation
+- `app/api/products/*` – authenticated CRUD API endpoints
+- `app/api/auth/[...nextauth]` – NextAuth.js credential-based auth
+- `app/admin/*` – protected admin dashboard pages
+- `scripts/seed.mjs` – utility script to bootstrap data
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set the same environment variables on your hosting provider (Vercel, etc.). Ensure `NEXTAUTH_URL` matches the deployed domain, and rerun the seed script or create users directly in MongoDB if needed.
