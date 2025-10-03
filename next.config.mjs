@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  experimental: {
+    optimizeCss: false, // ปิดการใช้ lightningcss
+  },
+};
 
-export default nextConfig;
+module.exports = nextConfig;

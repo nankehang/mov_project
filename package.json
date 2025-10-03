@@ -8,8 +8,8 @@
     "not IE 11"
   ],
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build ",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "seed": "node --env-file=.env.local scripts/seed.mjs"
   },
