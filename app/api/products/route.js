@@ -36,6 +36,9 @@ export async function POST(request) {
     rating,
     reviews,
     photo_path,
+    gallery,
+    stock,
+    category,
   } = body;
 
   const parsedPrice = Number(price);
@@ -65,6 +68,9 @@ export async function POST(request) {
     rating: Number.isNaN(parsedRating) ? undefined : parsedRating,
     reviews: Number.isNaN(parsedReviews) ? undefined : parsedReviews,
     photo_path: photo_path ?? "",
+    gallery: Array.isArray(gallery) ? gallery : [],
+    stock: stock !== undefined ? Number(stock) : undefined,
+    category: category ?? "",
   });
 
   return NextResponse.json(
@@ -77,7 +83,10 @@ export async function POST(request) {
       discount: product.discount,
       rating: product.rating,
       reviews: product.reviews,
-    photo_path: product.photo_path,
+      photo_path: product.photo_path,
+      gallery: product.gallery,
+      stock: product.stock,
+      category: product.category,
     },
     { status: 201 }
   );

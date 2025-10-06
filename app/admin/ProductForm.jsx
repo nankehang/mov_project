@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import ImageUpload from "./components/ImageUpload";
+import GalleryImageUpload from "./components/GalleryImageUpload";
 
 const emptyForm = {
   name: "",
@@ -14,6 +15,7 @@ const emptyForm = {
   rating: "",
   reviews: "",
   photo_path: "",
+  gallery: [],
   stock: "",
   category: "",
 };
@@ -39,6 +41,7 @@ export default function ProductForm({ mode = "create", product = null }) {
       rating: formData.rating === "" ? undefined : Number(formData.rating),
       reviews: formData.reviews === "" ? undefined : Number(formData.reviews),
       photo_path: formData.photo_path ?? "",
+      gallery: formData.gallery ?? [],
       stock: formData.stock === "" ? undefined : Number(formData.stock),
       category: formData.category ?? "",
     };
@@ -264,6 +267,17 @@ export default function ProductForm({ mode = "create", product = null }) {
             You can also use an emoji (🎧) or paste a direct URL to an external image.
           </p>
         </div>
+
+        {/* Gallery Images Upload Component */}
+        <GalleryImageUpload
+          gallery={formData.gallery || []}
+          onGalleryChange={(gallery) =>
+            setFormData((prev) => ({
+              ...prev,
+              gallery,
+            }))
+          }
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
           <div>

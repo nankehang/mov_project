@@ -61,8 +61,18 @@ export async function PATCH(request, { params }) {
     const parsed = Number(payload.reviews);
     updates.reviews = Number.isNaN(parsed) ? undefined : parsed;
   }
+  if (payload.stock !== undefined) {
+    const parsed = Number(payload.stock);
+    updates.stock = Number.isNaN(parsed) ? undefined : parsed;
+  }
   if (payload.photo_path !== undefined && !payload.photo_path) {
     updates.photo_path = "";
+  }
+  if (payload.gallery !== undefined) {
+    updates.gallery = Array.isArray(payload.gallery) ? payload.gallery : [];
+  }
+  if (payload.category !== undefined) {
+    updates.category = payload.category;
   }
 
   await connectDB();

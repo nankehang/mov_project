@@ -17,14 +17,20 @@ export default async function ProductDetailsPage({ params }) {
   }
 
   // Prepare gallery images
-  const galleryImages = product.gallery && product.gallery.length > 0
-    ? product.gallery
-    : [
-        product.photo_path || "📦",
-        product.photo_path || "📦",
-        product.photo_path || "📦",
-        product.photo_path || "📦",
-      ];
+  // If gallery has images, use them (limit to 4 for display)
+  // Otherwise fall back to photo_path repeated
+  let galleryImages = [];
+  
+  if (product.gallery && product.gallery.length > 0) {
+    // Use actual gallery images, limit to 4
+    galleryImages = product.gallery.slice(0, 4);
+  } else if (product.photo_path) {
+    // Fallback: repeat main photo
+    galleryImages = [product.photo_path];
+  } else {
+    // No images at all
+    galleryImages = ["📦"];
+  }
 
   const ratingValue = Math.max(0, Math.min(5, Math.round(product.rating ?? 0)));
   const savingsAmount = product.originalPrice
