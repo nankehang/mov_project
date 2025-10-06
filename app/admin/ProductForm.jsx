@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import ImageUpload from "./components/ImageUpload";
 
 const emptyForm = {
   name: "",
@@ -231,9 +232,21 @@ export default function ProductForm({ mode = "create", product = null }) {
           </div>
         </div>
 
+        {/* Image Upload Component */}
+        <ImageUpload
+          currentImage={formData.photo_path}
+          onImageUploaded={(url) =>
+            setFormData((prev) => ({
+              ...prev,
+              photo_path: url,
+            }))
+          }
+        />
+
+        {/* Optional: Manual URL input as fallback */}
         <div>
           <label className="block text-base sm:text-lg font-semibold text-gray-700 mb-3">
-            Photo path / URL / Emoji
+            Or enter image URL manually (optional)
           </label>
           <input
             type="text"
@@ -245,18 +258,10 @@ export default function ProductForm({ mode = "create", product = null }) {
               }))
             }
             className="w-full border-2 border-gray-300 rounded-lg px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-            placeholder="🎧 or /images/product.jpg or https://..."
+            placeholder="https://your-cdn.com/image.jpg or 🎧"
           />
           <p className="text-sm text-gray-500 mt-2 leading-relaxed">
-            Use an emoji (🎧), a path under{" "}
-            <code className="px-2 py-1 bg-gray-100 rounded text-red-600">
-              /public
-            </code>{" "}
-            (e.g.{" "}
-            <code className="px-2 py-1 bg-gray-100 rounded text-red-600">
-              /photos/item.jpg
-            </code>
-            ), or a full URL.
+            You can also use an emoji (🎧) or paste a direct URL to an external image.
           </p>
         </div>
 
