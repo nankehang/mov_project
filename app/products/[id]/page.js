@@ -5,7 +5,7 @@ import ImageGallery from "@/app/components/ImageGallery";
 import Header from "@/app/components/Header";
 import Navigation from "@/app/components/Navigation";
 import Footer from "@/app/components/Footer";
-import ChatMeButton from "./ChatMeButton";
+import ChatMeButton from "@/app/components/ChatMeButton";
 
 export const dynamic = "force-dynamic";
 
@@ -175,16 +175,27 @@ export default async function ProductDetailsPage({ params }) {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <ChatMeButton
-                  productId={product.id}
-                  productName={product.name}
-                  productUrl={`https://hmoobwin.com/products/${product.id}`}
-                  stock={product.stock}
-                />
+                <button
+                  disabled={product.stock === 0}
+                  className="flex-1 bg-red-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-red-700 transition-colors shadow-lg hover:shadow-xl disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                >
+                  <span className="text-2xl">🛒</span>
+                  <span>{product.stock === 0 ? "Out of Stock" : "Add to Cart"}</span>
+                </button>
                 <button className="sm:w-auto px-8 py-4 border-2 border-red-600 text-red-600 rounded-xl font-semibold text-lg hover:bg-red-50 transition-colors flex items-center justify-center gap-2">
                   <span className="text-2xl">❤️</span>
                   <span>Wishlist</span>
                 </button>
+              </div>
+
+              {/* Chat Me Button - SMS Inquiry */}
+              <div className="pt-2">
+                <ChatMeButton 
+                  productName={product.name}
+                  productId={id}
+                  phoneNumber="+16127200910"
+                  baseUrl="https://hmoobwin.com"
+                />
               </div>
 
               {/* Features / Highlights */}
