@@ -36,18 +36,21 @@ export default function Header() {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             {/* Logo */}
             <div className="flex items-center justify-center lg:justify-start mb-3 lg:mb-0">
-              <Image
-                src="/logo.png"
-                alt="hmoobwin Logo"
-                width={60}
-                height={60}
-                className="mr-2 sm:mr-3 rounded-full bg-transparent sm:w-[80px] sm:h-[80px] lg:w-[100px] lg:h-[100px]"
+              <Link href="/" aria-label="Go to homepage" className="flex items-center">
+                <Image
+                  src="/logo.png"
+                  alt="hmoobwin Logo"
+                  width={60}
+                  height={60}
+                  className="mr-2 sm:mr-3 rounded-full bg-transparent sm:w-[80px] sm:h-[80px] lg:w-[100px] lg:h-[100px]"
                 priority
                 unoptimized
               />
-              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold">
+              </Link>
+              <Link href="/" aria-label="Go to homepage" className="flex items-center"><h1 className="text-xl sm:text-2xl lg:text-3xl font-bold">
                 Hmoobwin
-              </h1>
+              </h1></Link>
+              
             </div>
               
             {/* Navigation Links */}
