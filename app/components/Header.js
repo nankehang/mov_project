@@ -8,12 +8,12 @@ export default function Header() {
         {/* Top bar */}
         <div className="flex flex-col sm:flex-row justify-between items-center py-2 text-xs sm:text-sm border-b border-red-500 gap-2">
           <div className="flex flex-col sm:flex-row sm:space-x-4 text-center sm:text-left">
-            <span className="whitespace-nowrap">📞 +1-234-567-8900</span>
+            <span className="whitespace-nowrap">📞 +1-(612)720-0910</span>
             <span className="hidden sm:inline">📧 support@hmoobwin.com</span>
           </div>
           <div className="flex flex-wrap gap-2 justify-center">
             <Link
-              href="#"
+              href="https://www.facebook.com/tseemtoskojxwb.thoj"
               className="bg-white text-blue-600 hover:bg-blue-100 transition-colors 
                       px-3 py-1 sm:px-4 sm:py-2 rounded-full shadow 
                       text-xs sm:text-sm"
