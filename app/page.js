@@ -11,6 +11,8 @@ export default async function Home() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <Header />
+      {/* <link rel="icon" type="image/x-icon" href="/favicon.ico" /> */}
+       <link rel="icon" href="/favicon.ico" /> {/* Or /favicon.png */}
       
       {/* Navigation */}
       <Navigation />
