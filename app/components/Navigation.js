@@ -2,14 +2,14 @@ import Link from 'next/link';
 
 export default function Navigation() {
   const categories = [
-    'Electronics',
-    'Fashion',
-    'Home & Garden',
-    'Sports',
-    'Books',
-    'Toys',
-    'Health',
-    'Automotive'
+    // 'Electronics',
+    // 'Fashion',
+    // 'Home & Garden',
+    // 'Sports',
+    // 'Books',
+    // 'Toys',
+    // 'Health',
+    // 'Automotive'
   ];
 
   return (

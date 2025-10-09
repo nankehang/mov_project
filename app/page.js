@@ -2,6 +2,7 @@ import Header from './components/Header';
 import Navigation from './components/Navigation';
 import ProductSearch from './components/ProductSearch';
 import Footer from './components/Footer';
+import ChatMeButton from './components/ChatMeButton';
 import { getProducts } from '@/lib/products';
 
 export default async function Home() {
@@ -24,9 +25,20 @@ export default async function Home() {
             Discover amazing products at unbeatable prices. Shop with confidence and enjoy fast, free delivery on orders over $50.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <button className="bg-white text-red-600 px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors hover:shadow-lg text-sm sm:text-base">
-              Chat Now
-            </button>
+            <ChatMeButton
+              phoneNumber="+16127200910"
+              productName="your products"
+              productId=""
+              customMessage="Hi! I'm interested in your products on hmoobwin.com"
+              label="Chat Now"
+              showIcon={false}
+              fullWidth={false}
+              disableHoverScale={true}
+              className="bg-white text-red-600 px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors hover:shadow-lg text-sm sm:text-base"
+              focusClassName="focus:outline-none focus:ring-2 focus:ring-white"
+              enableHoverOverlay={false}
+              enableRipple={false}
+            />
           </div>
         </div>
       </section>
@@ -52,19 +64,19 @@ export default async function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             <div className="text-center">
-              <div className="mb-4 text-4xl">�</div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-800">Free Shipping</h3>
-              <p className="text-gray-600">Free delivery on all orders over $50</p>
+              <div className="mb-4 text-4xl">💳</div>
+              <h3 className="mb-2 text-xl font-semibold text-gray-800">Buy now, pay later</h3>
+              <p className="text-gray-600">Orders over $500 can be paid within one week.</p>
             </div>
             <div className="text-center">
-              <div className="mb-4 text-4xl">🔒</div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-800">Secure Payment</h3>
-              <p className="text-gray-600">Your payment information is safe with us</p>
+              <div className="mb-4 text-4xl">💵</div>
+              <h3 className="mb-2 text-xl font-semibold text-gray-800">Wholesale price</h3>
+              <p className="text-gray-600">We offer the best value with our wholesale pricing model.</p>
             </div>
             <div className="text-center">
-              <div className="mb-4 text-4xl">↩️</div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-800">Easy Returns</h3>
-              <p className="text-gray-600">30-day return policy for your peace of mind</p>
+              <div className="mb-4 text-4xl">🚚</div>
+              <h3 className="mb-2 text-xl font-semibold text-gray-800">Fast Delivery</h3>
+              <p className="text-gray-600">Get your orders delivered quickly and safely.</p>
             </div>
           </div>
         </div>
