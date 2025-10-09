@@ -203,7 +203,11 @@ export default async function ProductDetailsPage({ params }) {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-green-600 font-bold">✓</span>
-                    30-day return policy
+                    Wholesale price
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-green-600 font-bold">✓</span>
+                    Fast Delivery
                   </li>
                   {/* <li className="flex items-center gap-2">
                     <span className="text-green-600 font-bold">✓</span>
